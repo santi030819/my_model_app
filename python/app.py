@@ -1,11 +1,17 @@
 from flask import Flask, render_template
 import subprocess
+import webbrowser
+import threading
 
 app = Flask(__name__)
 
 @app.route('/')
 def index():
     return render_template('index.html')
+def open_browser():
+    """Abre el navegador por defecto con la dirección de la app."""
+    webbrowser.open_new("http://127.0.0.1:5000")
+
 
 @app.route('/comenzar', methods=['POST'])
 def comenzar():
@@ -27,4 +33,6 @@ def comenzar():
         return render_template('index.html', output=f"Hubo un error al ejecutar el script: {str(e)}")
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    # Inicia el navegador en un hilo separado
+    threading.Timer(1, open_browser).start()
+    app.run(debug=False, use_reloader=False)
