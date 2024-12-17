@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>PUPSIK</title>
+        <!-- Enlaza el archivo CSS -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"> 
+        <!-- Enlace al favicon -->
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+<body>
+    <body>
+        <h1 id="titulo">Bienvenido a PUPSIK</h1>
+        <form action="/comenzar" method="post">
+            <div class="container">
+                <h2 id="energia">🌟 Click en el boton, para <br> empezar el día con alegría 🌟</h1>
+                <p>Presiona el botón para ejecutar el script.</p>
+                <button onclick="executeScript()">Empezamos turno</button>
+                <div id="message"></div>
+            </div>
+        </form>
+    
+        <!-- Mostrar la salida del script si existe -->
+        {% if output %}
+            <h3>Resultado del script:</h3>
+            <pre>{{ output }}</pre>
+        {% endif %}
+    </body>
+    <script>
+        function startDay() {
+            // Mostrar el mensaje en la página
+            const message = document.getElementById("message");
+            message.textContent = "Buenos días, empezamos el día ☕";
+
+            // Llamar al servidor para ejecutar el script
+            fetch('/run-script', {
+                method: 'POST'
+            })
+            .then(response => {
+                if (response.ok) {
+                    message.textContent += " | Script ejecutado correctamente ✔️";
+                } else {
+                    message.textContent += " | Hubo un problema al ejecutar el script ❌";
+                }
+            });
+        }
+    </script>
+</body>
+</html>

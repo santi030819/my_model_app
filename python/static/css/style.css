@@ -1,0 +1,52 @@
+  /* Estilo general de la página */
+  body {
+    text-align: center;
+background-image: url('/static/images/fondo.png');
+background-size: cover; /* Ajusta para que cubra toda la pantalla */
+background-repeat: no-repeat; /* Evita que se repita */
+background-position: center; /* Centra la imagen */
+}
+
+
+/* Caja principal */
+.container {
+    margin-top: 15%;
+    background: rgba(255, 255, 240, 0.8); /* Fondo blanco envejecido */
+    padding: 30px;
+    border: 3px solid #8b5e3c; /* Borde marrón oscuro */
+    border-radius: 10px;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.3);
+    display: inline-block;
+}
+
+/* Título */
+h1, #energia {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+    color: gold;
+}
+/* Botón */
+button {
+    padding: 10px 20px;
+    font-size: 18px;
+    color: gold;
+    background-color: #8b5e3c; /* Marrón clásico */
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background-color: #6d4c32; /* Tonalidad más oscura al pasar el mouse */
+    transform: scale(1.1);
+}
+
+/* Mensaje */
+#message {
+    font-size: 1.3em;
+    margin-top: 20px;
+    color: #5a3c2d;
+}
